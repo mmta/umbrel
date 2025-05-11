@@ -30,13 +30,13 @@ apt-get install --yes -t bookworm-backports linux-image-amd64 linux-headers-amd6
 apt-get install --yes lvm2
 
 # Install additional packages you want to install automatically after every version upgrade
-apt-get install --yes powertop
+apt-get install --yes powertop wget
 
 # Install additional drivers from linux-firmware if needed
 # The followig drivers are needed for the Intel AX201 WiFi & bluetooth
 wget -P /lib/firmware/ https://gitlab.com/kernel-firmware/linux-firmware/-/raw/788aadc8f73d93908cf8545b2fc770fb6580a3f2/iwlwifi-so-a0-hr-b0-89.ucode
 wget -P /lib/firmware/intel/ https://gitlab.com/kernel-firmware/linux-firmware/-/raw/788aadc8f73d93908cf8545b2fc770fb6580a3f2/intel/ibt-0040-1050.sfi
 
-# Uncomment the following to allow access to emergency mode if the system fails to boot
-# Right after new image deployment. Should only be used for debugging.
-# echo "root:Atemporary.Passw0rd" | chpasswd
+# Set the root password here to enable maintenance mode.
+# A new image deployment requires one time /etc/fstab modification from that mode
+echo "root:Atemporary.Passw0rd" | chpasswd
